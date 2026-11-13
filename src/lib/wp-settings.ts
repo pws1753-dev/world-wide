@@ -153,7 +153,7 @@ export const defaultSiteSettings: WpSiteSettings = {
   },
   logos: {
     header_logo: getWpMedia("/world-wide-logo.png"),
-    footer_logo: getWpMedia("/worldwide-supply-28-logo.jpeg"),
+    footer_logo: getWpMedia("/world-wide-logo.png"),
     transparent_logo: getWpMedia("/worldwide-supply-28-logo-transparent.png"),
     favicon: getWpMedia("/favicon.ico"),
   },

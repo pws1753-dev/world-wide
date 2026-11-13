@@ -26,13 +26,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Col 1: Brand Info & Clean Tightly-Cropped Logo */}
           <div className="flex flex-col space-y-6">
-            <Link href="/" className="inline-block shrink-0">
+            <Link href="/" className="inline-flex items-center shrink-0">
               <Image
                 src={settings.logos.footer_logo || settings.logos.header_logo || getWpMedia("/world-wide-logo.png")}
                 alt="Worldwide Supply 28 SL Logo"
-                width={260}
-                height={110}
-                className="h-20 sm:h-24 w-auto object-contain"
+                width={240}
+                height={100}
+                className="h-16 sm:h-20 w-auto object-contain"
               />
             </Link>
             <p className="text-xs text-slate-600 leading-relaxed font-medium">

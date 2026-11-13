@@ -5,6 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { Eye, MapPin, Sparkles, Target } from "lucide-react";
 import { getWpMedia } from "@/lib/wp-media";
 import { useSiteSettings } from "@/context/SiteSettingsContext";
+import { siteData } from "@/data/siteData";
 
 export function AboutStorySection() {
   const { t } = useLanguage();
@@ -15,19 +16,35 @@ export function AboutStorySection() {
 
   const founders = [
     {
-      name: settings.founders.siddharth.name || "Siddharth Thakker",
+      name: settings.founders.siddharth.name || siteData.about.story.siddharth.name,
       role: {
         en: settings.founders.siddharth.role || "Co-Founder & Director",
         es: "Cofundador y Director"
+      },
+      location: {
+        en: "Valencia, Spain",
+        es: "Valencia, España"
+      },
+      bio: {
+        en: settings.founders.siddharth.bio || siteData.about.story.siddharth.bio.en,
+        es: siteData.about.story.siddharth.bio.es
       },
       image: settings.founders.siddharth.image || getWpMedia("/images/team/siddharth-thakker.jpg"),
       alt: "Siddharth Thakker Co-Founder and Director Worldwide Supply 28 SL",
     },
     {
-      name: settings.founders.sakina.name || "Sakina Idmouhine",
+      name: settings.founders.sakina.name || siteData.about.story.sakina.name,
       role: {
         en: settings.founders.sakina.role || "Co-Founder & Director",
         es: "Cofundadora y Directora"
+      },
+      location: {
+        en: "Valencia, Spain",
+        es: "Valencia, España"
+      },
+      bio: {
+        en: settings.founders.sakina.bio || siteData.about.story.sakina.bio.en,
+        es: siteData.about.story.sakina.bio.es
       },
       image: settings.founders.sakina.image || getWpMedia("/images/team/sakina-idmouhine.jpg"),
       alt: "Sakina Idmouhine Co-Founder and Director Worldwide Supply 28 SL",
@@ -53,34 +70,37 @@ export function AboutStorySection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="mx-auto mb-16 grid max-w-5xl grid-cols-1 gap-8 sm:mb-20 md:grid-cols-2">
           {founders.map((founder) => (
             <article
               key={founder.name}
-              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#00A884] hover:shadow-xl sm:p-8"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-500 hover:-translate-y-1 hover:border-[#00A884] hover:shadow-xl"
             >
-              <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
-                <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl border-2 border-[#00A884] bg-slate-100 shadow-md">
-                  <Image
-                    src={founder.image}
-                    alt={founder.alt}
-                    fill
-                    sizes="96px"
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="min-w-0">
-                  <span className="inline-block rounded-full bg-[#00A884]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#00A884]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden bg-slate-100">
+                <Image
+                  src={founder.image}
+                  alt={founder.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute bottom-4 left-6">
+                  <span className="inline-block rounded-full bg-[#00A884] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
                     {t(founder.role.en, founder.role.es)}
                   </span>
-                  <h3 className="mt-3 text-2xl font-semibold text-[#071321] sm:text-3xl">
-                    {founder.name}
-                  </h3>
-                  <p className="mt-2 flex items-center justify-center gap-1 text-xs font-semibold text-slate-500 sm:justify-start">
-                    <MapPin className="h-3.5 w-3.5 text-[#00A884]" />
-                    Valencia, Spain
-                  </p>
                 </div>
+              </div>
+              <div className="flex flex-1 flex-col p-6 sm:p-8">
+                <h3 className="text-2xl font-bold text-[#071321] sm:text-3xl">
+                  {founder.name}
+                </h3>
+                <p className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                  <MapPin className="h-3.5 w-3.5 text-[#00A884]" />
+                  <span>{t(founder.location.en, founder.location.es)}</span>
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                  {t(founder.bio.en, founder.bio.es)}
+                </p>
               </div>
             </article>
           ))}
