@@ -25,6 +25,10 @@ export function AboutStorySection() {
         en: "Valencia, Spain",
         es: "Valencia, España"
       },
+      bio: {
+        en: settings.founders.siddharth.bio || siteData.about.story.siddharth.bio.en,
+        es: siteData.about.story.siddharth.bio.es
+      },
       image: settings.founders.siddharth.image || getWpMedia("/images/team/siddharth-thakker.jpg"),
       alt: "Siddharth Thakker Co-Founder and Director Worldwide Supply 28 SL",
     },
@@ -37,6 +41,10 @@ export function AboutStorySection() {
       location: {
         en: "Valencia, Spain",
         es: "Valencia, España"
+      },
+      bio: {
+        en: settings.founders.sakina.bio || siteData.about.story.sakina.bio.en,
+        es: siteData.about.story.sakina.bio.es
       },
       image: settings.founders.sakina.image || getWpMedia("/images/team/sakina-idmouhine.jpg"),
       alt: "Sakina Idmouhine Co-Founder and Director Worldwide Supply 28 SL",
@@ -89,6 +97,9 @@ export function AboutStorySection() {
                 <p className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-slate-500">
                   <MapPin className="h-3.5 w-3.5 text-[#00A884]" />
                   <span>{t(founder.location.en, founder.location.es)}</span>
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                  {t(founder.bio.en, founder.bio.es)}
                 </p>
               </div>
             </article>
